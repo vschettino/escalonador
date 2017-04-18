@@ -1,8 +1,8 @@
 import time
-class EscalonadorFCFS:
-    """classe que represnta o Escalonador FCFS"""
+class EscalonadorSJF:
+    """classe que represnta o Escalonador SJF"""
     processList = []
-    resFileName = 'resultadosFCFS.txt'
+    resFileName = 'resultadosSJF.txt'
     resFile = ""
 
     def __init__(self,pl):
@@ -12,6 +12,7 @@ class EscalonadorFCFS:
 
     def start(self):
         total = 0
+        self.processList = sorted(self.processList, key=lambda process: process.timeToExecute)
         for process in self.processList:
             process.execute()
             self.writeResults(total, process)
